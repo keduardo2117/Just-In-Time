@@ -1,5 +1,5 @@
 //
-//  Compresor.h
+//  Compressor.h
 //  ManteinanceRemember
 //
 //  Created by Eduardo Carrillo Albor on 19/10/12.
@@ -9,15 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Empresa;
+@class Company;
 
-@interface Compresor : NSManagedObject
+@interface Compressor : NSManagedObject
 
 @property (nonatomic, retain) NSString * identifier;
-@property (nonatomic, retain) NSNumber * maintenaceInterval;
+@property (nonatomic, retain) NSNumber * maintenanceInterval;
 @property (nonatomic, retain) NSString * model;
 @property (nonatomic, retain) NSDate * nextMaintenance;
 @property (nonatomic, retain) NSDate * lastMaintenance;
-@property (nonatomic, retain) Empresa *buyer;
+@property (nonatomic, retain) Company *buyer;
 
 @end

@@ -1,5 +1,5 @@
 //
-//  Empresa.h
+//  Company.h
 //  ManteinanceRemember
 //
 //  Created by Eduardo Carrillo Albor on 19/10/12.
@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class Compresor;
+@class Compressor;
 
-@interface Empresa : NSManagedObject
+@interface Company : NSManagedObject
 
 @property (nonatomic, retain) NSString * email;
 @property (nonatomic, retain) NSString * companyName;
@@ -20,10 +20,10 @@
 @property (nonatomic, retain) NSSet *compressors;
 @end
 
-@interface Empresa (CoreDataGeneratedAccessors)
+@interface Company (CoreDataGeneratedAccessors)
 
-- (void)addCompressorsObject:(Compresor *)value;
-- (void)removeCompressorsObject:(Compresor *)value;
+- (void)addCompressorsObject:(Compressor *)value;
+- (void)removeCompressorsObject:(Compressor *)value;
 - (void)addCompressors:(NSSet *)values;
 - (void)removeCompressors:(NSSet *)values;
 

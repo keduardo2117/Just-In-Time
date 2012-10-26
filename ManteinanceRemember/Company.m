@@ -1,16 +1,16 @@
 //
-//  Empresa.m
+//  Company.m
 //  ManteinanceRemember
 //
 //  Created by Eduardo Carrillo Albor on 19/10/12.
 //  Copyright (c) 2012 Eduardo Antonio Carrillo Albor. All rights reserved.
 //
 
-#import "Empresa.h"
-#import "Compresor.h"
+#import "Company.h"
+#import "Compressor.h"
 
 
-@implementation Empresa
+@implementation Company
 
 @dynamic email;
 @dynamic companyName;
