@@ -83,7 +83,7 @@
     [self.view setBackgroundColor:bgColor];
     self.maintenanceIntervalPickerContainer.transform = CGAffineTransformMakeTranslation(0, 260);
     self.lastMaintenancePickerContainer.transform = CGAffineTransformMakeTranslation(0, 260);
-    intervalos = @[@"15000", @"10000", @"5000"];
+    intervalos = @[@"2000", @"4000", @"8000"];
     modelos = @[ @"Compresor 1", @"Compresor 2", @"Compresor 3"];
     // Do any additional setup after loading the view.
 }

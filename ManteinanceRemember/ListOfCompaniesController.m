@@ -109,7 +109,7 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        BlockAlertView * alert = [[BlockAlertView alloc] initWithTitle:@"Precaucion" message:@"Estas a punto de borrar una empresa y todos suscompresores. ¿Quieres seguir?"];
+        BlockAlertView * alert = [[BlockAlertView alloc] initWithTitle:@"Precaución" message:@"Estas apunto de eliminar una empresa y todos sus compresores. ¿Quieres seguir?"];
         [alert setDestructiveButtonWithTitle:@"NO" block:^(void){}];
         __weak DataManager* dataManager = [DataManager sharedInstance];
         __weak UITableView* table = self.tableView;

@@ -2,7 +2,7 @@
 //  Compresor.h
 //  ManteinanceRemember
 //
-//  Created by Eduardo Carrillo Albor on 19/10/12.
+//  Created by Eduardo Carrillo Albor on 03/10/12.
 //  Copyright (c) 2012 Eduardo Antonio Carrillo Albor. All rights reserved.
 //
 
@@ -14,10 +14,10 @@
 @interface Compresor : NSManagedObject
 
 @property (nonatomic, retain) NSString * identifier;
-@property (nonatomic, retain) NSNumber * maintenaceInterval;
-@property (nonatomic, retain) NSString * model;
-@property (nonatomic, retain) NSDate * nextMaintenance;
-@property (nonatomic, retain) NSDate * lastMaintenance;
-@property (nonatomic, retain) Empresa *buyer;
+@property (nonatomic, retain) NSNumber * maintennaceInterval;
+@property (nonatomic, retain) NSString * modelo;
+@property (nonatomic, retain) NSDate * proximoMantenimiento;
+@property (nonatomic, retain) NSDate * ultimoMantenimiento;
+@property (nonatomic, retain) Empresa *comprador;
 
 @end

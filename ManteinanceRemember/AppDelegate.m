@@ -18,11 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-#define TESTING 1
-#ifdef TESTING
-    [TestFlight setDeviceIdentifier:[UIDevice currentDevice].uniqueIdentifier];
-#endif
-    [TestFlight takeOff:@"3bcfb0fb2419921703e2aefe3b3eaf51_MTM3NzU1MjAxMi0wOS0zMCAwMTo1ODoxMi43NDIwODM"];
     UIImage *navBarImage = [UIImage imageNamed:@"ipad-menubar-right.png"];
     [[UINavigationBar appearance] setBackgroundImage:navBarImage forBarMetrics:UIBarMetricsDefault];
     
@@ -60,7 +55,7 @@
                                                     barMetrics:UIBarMetricsDefault];
     //[[UIApplication sharedApplication] cancelAllLocalNotifications];
     [DataManager isFirstTime];
-    NSLog(@"Notificaciones guardadas: %d",[[[UIApplication sharedApplication] scheduledLocalNotifications] count]);
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
         UINavigationController *navigationController = [splitViewController.viewControllers lastObject];

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="3">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
@@ -24,7 +24,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="" title="Master" id="12" customClass="ListOfCompaniesController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" sectionHeaderHeight="22" sectionFooterHeight="22" id="13">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -97,11 +97,11 @@
             <objects>
                 <viewController id="ag1-1x-rZy" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QYE-db-N5t">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Etd-2c-7kE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </scrollView>
                         </subviews>
@@ -133,11 +133,11 @@
             <objects>
                 <viewController id="vqR-xn-eyp" customClass="NewCompanyController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="la1-Ix-WxN">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="lW8-Yk-SQ9" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nueva empresa" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="465-BZ-k6j">
@@ -235,7 +235,7 @@
             <objects>
                 <tableViewController id="Nsd-Oj-6om" customClass="ListOfCompressorsController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="91" sectionHeaderHeight="22" sectionFooterHeight="22" id="veE-ve-72V">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -295,7 +295,7 @@
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="add" id="nrc-d4-aew">
                             <color key="tintColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="vsx-Si-fFl" kind="modal" identifier="newCompressor" modalTransitionStyle="flipHorizontal" id="JWc-JK-66d"/>
+                                <segue destination="vsx-Si-fFl" kind="modal" identifier="newCompressor" modalTransitionStyle="crossDissolve" id="JWc-JK-66d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -307,7 +307,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cqp-xp-qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="eE4-3a-osA">
                     <connections>
-                        <segue destination="6mL-Ra-9Y8" kind="modal" identifier="companyData" modalTransitionStyle="flipHorizontal" id="5kI-Bb-3RU"/>
+                        <segue destination="6mL-Ra-9Y8" kind="modal" identifier="companyData" modalTransitionStyle="crossDissolve" id="5kI-Bb-3RU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -333,7 +333,7 @@
             <objects>
                 <viewController id="caC-VF-uUq" customClass="CompanyInformationDisplayController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tw5-Zu-fsL">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="left" text="Company" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IFg-Ro-fj1">
@@ -458,11 +458,11 @@
             <objects>
                 <viewController id="8sF-k5-1X4" customClass="NewCompressorController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vmT-dm-SZO">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="9kq-RN-70Q" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="88" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nuevo compresor" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Z8f-Kv-Gkd">
@@ -688,7 +688,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="JWc-JK-66d"/>

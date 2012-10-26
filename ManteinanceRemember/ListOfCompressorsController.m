@@ -40,12 +40,10 @@
         [newCompressorView setEmpresa:self.company];
         newCompressorView.delegate = self;
     }else if([segue.identifier isEqualToString:@"companyData"]){
-        [TestFlight passCheckpoint:@"Va a ver los datos de la empresa"];
         UINavigationController *navCon = segue.destinationViewController;
         CompanyInformationDisplayController* newInfoDisplayerView = [navCon.viewControllers objectAtIndex:0];
         [newInfoDisplayerView setCompany:self.company];
     }else if ([segue.identifier isEqualToString:@"editCompressor"]){
-        [TestFlight passCheckpoint:@"Va a editar los datos de un compresor"];
         UINavigationController *navCon = segue.destinationViewController;
         NewCompressorController* newCompressorView = [navCon.viewControllers objectAtIndex:0];
         UITableViewCell *cell = sender;
@@ -61,7 +59,7 @@
     CALayer* shadowLayer = [self createShadowWithFrame:CGRectMake(0, 0, 320, 5)];
     [self.view.layer addSublayer:shadowLayer];
     
-    sortValue = @"modelo";
+    sortValue = @"proximoMantenimiento";
     UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
     [self.view setBackgroundColor:bgColor];
     /*PVCustomPikhubButton *backButton = [[PVCustomPikhubButton alloc] initWithFrame:CGRectZero isBackButton:YES];
@@ -90,6 +88,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
+    NSLog(@"Aparecio la vista");
     [self becomeFirstResponder];
     [super viewWillAppear:animated];
     compressors = [[DataManager sharedInstance] getCompressorsFromCompany:self.company];
@@ -106,10 +105,9 @@
             [SVProgressHUD showSuccessWithStatus:@"Por ultimo mantenimieto"];
             sortValue = @"ultimoMantenimiento";
         }else{
-            [SVProgressHUD showSuccessWithStatus:@"Por modelo"];
+            [SVProgressHUD showSuccessWithStatus:@"Por orden alfabetico"];
             sortValue = @"modelo";
         }
-        [TestFlight passCheckpoint:[NSString stringWithFormat:@"Va a reordenar la vista por %@",sortValue]];
         [self sortListByValue:sortValue];
         [self.tableView reloadData];
     }
@@ -198,7 +196,7 @@
 
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        BlockAlertView * alert = [[BlockAlertView alloc] initWithTitle:@"Precaucion" message:@"Estas a punto de borrar un compresor. ¿Quieres seguir?"];
+        BlockAlertView * alert = [[BlockAlertView alloc] initWithTitle:@"Precaucion" message:@"Estas a punto de borrar un compresor. ¿Deseas continuar?"];
         [alert setDestructiveButtonWithTitle:@"NO" block:^(void){}];
         __weak UITableView* table = self.tableView;
         __weak NSMutableArray *mutableArray = compressors;
@@ -278,7 +276,6 @@
 }
 
 -(void)openNewCompressorView{
-    [TestFlight  passCheckpoint:@"Creo un nuevo compresor"];
     [self performSegueWithIdentifier:@"newCompressor" sender:nil];
 }
 

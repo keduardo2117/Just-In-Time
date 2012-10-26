@@ -33,6 +33,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
+    [self.view setBackgroundColor:bgColor];
     self.title = @"Nueva empresa";
     [self setPaddingForTextfields];
     PVCustomPikhubButton *doneBtn = [[PVCustomPikhubButton alloc] initWithFrame:CGRectZero isBackButton:NO];
@@ -52,8 +54,6 @@
 
 - (void)viewDidUnload
 {
-    UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
-    [self.view setBackgroundColor:bgColor];
     [self setTxfCompanyName:nil];
     [self setTxfContactPersonName:nil];
     [self setTxfThelephone:nil];
@@ -98,7 +98,6 @@
         [alert show];
         
     }
-    
 }
 
 - (void)closeView:(id)sender {

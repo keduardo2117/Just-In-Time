@@ -14,7 +14,6 @@
 		03043D0F161D48190084DCD5 /* alert-gray-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03043D0D161D48170084DCD5 /* alert-gray-button@2x.png */; };
 		031FBC3B1619501800FBAD92 /* STSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 031FBC3A1619501800FBAD92 /* STSegmentedControl.m */; };
 		0350F6EE161FE37A00D52F8B /* FirstTimeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0350F6ED161FE37A00D52F8B /* FirstTimeConfig.plist */; };
-		03A4A6541618348B00C66129 /* libTestFlight.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4A6501618348B00C66129 /* libTestFlight.a */; };
 		03A4A6551618348B00C66129 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6511618348B00C66129 /* README.md */; };
 		03A4A6561618348B00C66129 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6521618348B00C66129 /* release_notes.md */; };
 		03A4A65916183E3500C66129 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4A65816183E3500C66129 /* libz.dylib */; };
@@ -303,7 +302,6 @@
 				6C2FB16215FC3FD8005E23DA /* Foundation.framework in Frameworks */,
 				6C2FB16415FC3FD8005E23DA /* CoreGraphics.framework in Frameworks */,
 				6C2FB16615FC3FD8005E23DA /* CoreData.framework in Frameworks */,
-				03A4A6541618348B00C66129 /* libTestFlight.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

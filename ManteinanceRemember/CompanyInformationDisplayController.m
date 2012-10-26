@@ -106,8 +106,8 @@
         mailComposer.mailComposeDelegate = self;
         [mailComposer setSubject:@"Aviso de mantenimiento"];
         [mailComposer setToRecipients:@[self.company.correo]];
-        [mailComposer setBccRecipients:@[@"eduardo_ghost@me.com"]];
-        [mailComposer setMessageBody:@"Mantenimiento" isHTML:NO];
+        [mailComposer setBccRecipients:@[@"tcste@prodigy.net.mx", @"tcsureste@gmail.com", @"mx.canmar@gmail.com"]];
+        [mailComposer setMessageBody:@"Tecnocompresores del sureste \n Ing. Max Cano Marquez" isHTML:NO];
         [self presentViewController:mailComposer animated:YES completion:nil];
     }else{
         BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:@"Error" message:@"No puedes enviar mails en este momento, revisa tu conexion a internet."];
