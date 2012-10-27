@@ -24,6 +24,7 @@
     NSArray* modelos;
     NSArray* datos;
     NSInteger hoursToNotifyBeforeMaintenance;
+    NSInteger dailyWorkPeriodSelected;
 }
 @synthesize txfModeloCompresor;
 @synthesize txfMaintenanceInterval;
@@ -58,13 +59,26 @@
     }
     NSArray *objects = [NSArray arrayWithObjects:@"300", @"500", nil];
 	STSegmentedControl *segment = [[STSegmentedControl alloc] initWithItems:objects];
+    segment.tag = 100;
 	segment.frame = CGRectMake(100, 218, 120, 45);
 	segment.selectedSegmentIndex = 0;
 	segment.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     segment.layer.zPosition = -1;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(segmentedControlSelectedIndexDidChange:) name:@"selectedIndexDidChange" object:nil];
     [self.view addSubview:segment];
+    
+    NSArray *dailyWorkPeriod = @[@"8",@"12",@"24"];
+    STSegmentedControl * dailyWorkSelector = [[STSegmentedControl alloc] initWithItems:dailyWorkPeriod];
+    dailyWorkSelector.tag = 101;
+    dailyWorkSelector.frame = CGRectMake(100, 273, 120, 45);
+    dailyWorkSelector.selectedSegmentIndex = 0;
+    dailyWorkSelector.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    dailyWorkSelector.layer.zPosition = -2;
+    [self.view addSubview:dailyWorkSelector];
+    
+    dailyWorkPeriodSelected = 8;
     hoursToNotifyBeforeMaintenance = 300;
+    
     self.title = @"Nuevo compresor";
     [self setPaddingForTextfields];
     
@@ -188,7 +202,7 @@
         [formater setTimeZone:[NSTimeZone localTimeZone]];
         [formater setDateStyle:NSDateFormatterMediumStyle];
         NSDate *ultimoMantenimiento = [formater dateFromString:self.txfLastMaintenance.text];
-        NSInteger nextMaintenaceInterval = (([self.txfMaintenanceInterval.text intValue]*60)*60);
+        NSInteger nextMaintenaceInterval = (([self.txfMaintenanceInterval.text intValue]*60)*60)*dailyWorkPeriodSelected;
         NSDate *proximoMantenimiento = [ultimoMantenimiento dateByAddingTimeInterval:nextMaintenaceInterval];
         NSDictionary *newCompressorData = @{
         @"model" : self.txfModeloCompresor.text,
@@ -269,11 +283,27 @@
 -(void)segmentedControlSelectedIndexDidChange:(NSNotification *)pNotification
 {
     STSegmentedControl * control = (STSegmentedControl*)pNotification.object;
-    if (control.selectedSegmentIndex == 0) {
-        hoursToNotifyBeforeMaintenance = 300;
+    if (control.tag == 100) {
+        if (control.selectedSegmentIndex == 0) {
+            hoursToNotifyBeforeMaintenance = 300;
+        }else{
+            hoursToNotifyBeforeMaintenance = 500;
+        }
     }else{
-        hoursToNotifyBeforeMaintenance = 500;
+        switch (control.selectedSegmentIndex) {
+            case 0:
+                dailyWorkPeriodSelected = 3;
+                break;
+            case 1:
+                dailyWorkPeriodSelected = 2;
+                break;
+            case 2:
+                dailyWorkPeriodSelected = 1;
+            default:
+                break;
+        }
     }
+    
+    
 }
-
 @end
