@@ -17,6 +17,8 @@
 		03A4A6551618348B00C66129 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6511618348B00C66129 /* README.md */; };
 		03A4A6561618348B00C66129 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6521618348B00C66129 /* release_notes.md */; };
 		03A4A65916183E3500C66129 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4A65816183E3500C66129 /* libz.dylib */; };
+		03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9CEC6163CB8DC002ADBFA /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		03F9CECF163CBA11002ADBFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */; };
 		6C18AC8A160FCDF7003C30FD /* ListOfCompressorsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AC89160FCDF7003C30FD /* ListOfCompressorsController.m */; };
 		6C18AD3B16100923003C30FD /* alert-bg-pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C18AC9916100923003C30FD /* alert-bg-pattern.png */; };
 		6C18AD3C16100923003C30FD /* alert-bg-pattern@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 6C18AC9A16100923003C30FD /* alert-bg-pattern@2x.png */; };
@@ -153,6 +155,9 @@
 		03A4A6521618348B00C66129 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		03A4A6531618348B00C66129 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		03A4A65816183E3500C66129 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		03F9CEC5163CB8DC002ADBFA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = External/Reachability.h; sourceTree = "<group>"; };
+		03F9CEC6163CB8DC002ADBFA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = External/Reachability.m; sourceTree = "<group>"; };
+		03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		6C18AC89160FCDF7003C30FD /* ListOfCompressorsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListOfCompressorsController.m; sourceTree = "<group>"; };
 		6C18AC9916100923003C30FD /* alert-bg-pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert-bg-pattern.png"; sourceTree = "<group>"; };
 		6C18AC9A16100923003C30FD /* alert-bg-pattern@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert-bg-pattern@2x.png"; sourceTree = "<group>"; };
@@ -293,6 +298,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03F9CECF163CBA11002ADBFA /* SystemConfiguration.framework in Frameworks */,
 				03A4A65916183E3500C66129 /* libz.dylib in Frameworks */,
 				6C2BDF2F1615468E0085247B /* MessageUI.framework in Frameworks */,
 				6C3AD13F1614120E002EC3EB /* QuartzCore.framework in Frameworks */,
@@ -333,6 +339,8 @@
 		6C18AC88160FCD4C003C30FD /* ExternalClases */ = {
 			isa = PBXGroup;
 			children = (
+				03F9CEC5163CB8DC002ADBFA /* Reachability.h */,
+				03F9CEC6163CB8DC002ADBFA /* Reachability.m */,
 				03043CFF161D2E390084DCD5 /* NSData+MD5.h */,
 				03043CFD161D2AF50084DCD5 /* NSData+MD5.m */,
 				031FBC381619501800FBAD92 /* STSegmentedControl */,
@@ -471,6 +479,7 @@
 		6C2FB15E15FC3FD8005E23DA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */,
 				03043CF9161D2A8B0084DCD5 /* libcommonCrypto.dylib */,
 				03A4A65816183E3500C66129 /* libz.dylib */,
 				6C2BDF2E1615468E0085247B /* MessageUI.framework */,
@@ -717,6 +726,7 @@
 				03043CFE161D2AF50084DCD5 /* NSData+MD5.m in Sources */,
 				03043D08161D2F680084DCD5 /* Compresor.m in Sources */,
 				03043D0B161D2F690084DCD5 /* Empresa.m in Sources */,
+				03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -814,6 +824,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -831,6 +842,7 @@
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

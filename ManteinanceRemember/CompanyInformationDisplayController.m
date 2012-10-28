@@ -9,6 +9,8 @@
 #import "CompanyInformationDisplayController.h"
 #import "Empresa.h"
 #import "BlockAlertView.h"
+#import "Reachability.h"
+
 @interface CompanyInformationDisplayController ()
 
 @end
@@ -101,29 +103,41 @@
 }
 -(IBAction)openMailComposer{
     [self closeActionSheet];
-    if ([MFMailComposeViewController canSendMail]) {
-        MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
-        mailComposer.mailComposeDelegate = self;
-        [mailComposer setSubject:@"Aviso de mantenimiento"];
-        [mailComposer setToRecipients:@[self.company.correo]];
-        [mailComposer setBccRecipients:@[@"tcste@prodigy.net.mx", @"tcsureste@gmail.com", @"mx.canmar@gmail.com"]];
-        [mailComposer setMessageBody:@"Tecnocompresores del sureste \n Ing. Max Cano Marquez" isHTML:NO];
-        [self presentViewController:mailComposer animated:YES completion:nil];
-    }else{
+    Reachability * reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    if (status != NotReachable) {
+        if ([MFMailComposeViewController canSendMail]) {
+            MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
+            mailComposer.mailComposeDelegate = self;
+            [mailComposer setSubject:@"Aviso de mantenimiento"];
+            [mailComposer setToRecipients:@[self.company.correo]];
+            [mailComposer setBccRecipients:@[@"tcste@prodigy.net.mx", @"tcsureste@gmail.com", @"mx.canmar@gmail.com"]];
+            [mailComposer setMessageBody:@"Tecnocompresores del sureste \n Ing. Max Cano Marquez" isHTML:NO];
+            [self presentViewController:mailComposer animated:YES completion:nil];
+        }
+    } else{
         BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:@"Error" message:@"No puedes enviar mails en este momento, revisa tu conexion a internet."];
+        [alert setDestructiveButtonWithTitle:@"Recibido" block:nil];
         [alert show];
     }
 }
 -(IBAction)openMessageComposer{
     [self closeActionSheet];
-    if ([MFMessageComposeViewController canSendText]) {
-        MFMessageComposeViewController *messageComposer = [[MFMessageComposeViewController alloc] init];
-        messageComposer.messageComposeDelegate = self;
-        [messageComposer setRecipients:@[self.company.correo]];
-        [messageComposer setBody:@"Mantenimiento"];
-        [self presentViewController:messageComposer animated:YES completion:nil];
-    }else{
-        BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:@"Error" message:@"No puedes enviar mails en este momento, revisa tu conexion a internet."];
+    Reachability * reachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus status = [reachability currentReachabilityStatus];
+    if (status != NotReachable) {
+        if ([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *messageComposer = [[MFMessageComposeViewController alloc] init];
+            messageComposer.messageComposeDelegate = self;
+            [messageComposer setRecipients:@[self.company.correo]];
+            [messageComposer setBody:@"Mantenimiento"];
+            [self presentViewController:messageComposer animated:YES completion:nil];
+        }
+    }
+    else{
+        BlockAlertView *alert = [[BlockAlertView alloc] initWithTitle:@"Error"
+                                                              message:@"No puedes enviar mails en este momento, revisa tu conexion a internet."];
+        [alert setDestructiveButtonWithTitle:@"Recibido" block:nil];
         [alert show];
     }
 }
