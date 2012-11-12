@@ -15,6 +15,7 @@
 #import "STSegmentedControl.h"
 #import "NSData+MD5.h"
 
+
 @interface NewCompressorController ()
 
 @end
@@ -25,6 +26,7 @@
     NSArray* datos;
     NSInteger hoursToNotifyBeforeMaintenance;
     NSInteger dailyWorkPeriodSelected;
+    NSString * observations;
 }
 @synthesize txfModeloCompresor;
 @synthesize txfMaintenanceInterval;
@@ -40,10 +42,21 @@
     if (self) {
         // Custom initialization
         self.compressor = nil;
+        observations = [NSString string];
     }
     return self;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"addObservation"]) {
+        CompressorObservationsViewController * controller = segue.destinationViewController;
+        if (self.compressor)
+            controller.observation = self.compressor.observations;
+        else
+            controller.observation = observations;
+        controller.delegate = self;
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -210,6 +223,7 @@
         @"lastMaintenance" : ultimoMantenimiento,
         @"nextMaintenance" : proximoMantenimiento,
         @"hoursToNotifyBeforeMaintenance" : [NSNumber numberWithInt:[self.txfMaintenanceInterval.text intValue]],
+        @"observations" : observations,
         };
         
         if (self.compressor) {
@@ -303,7 +317,12 @@
                 break;
         }
     }
-    
-    
+}
+
+#pragma mark Observations delegate
+-(void)textView:(UITextView *)textView didChageContent:(NSString *)content{
+    observations = content;
+    if (self.compressor)
+        self.compressor.observations = content;
 }
 @end

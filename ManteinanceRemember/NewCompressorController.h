@@ -7,13 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CompressorObservationsViewController.h"
 @class NewCompressorController, Compresor, Empresa;
 @protocol NewCompressorDelegate
 
 -(void) saveNewCompressor:(NSDictionary*)companyData;
 -(void) modifyCompressor:(NSDictionary*)companyData;
 @end
-@interface NewCompressorController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate>
+@interface NewCompressorController : UIViewController<UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate, ObservationsDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *txfModeloCompresor;
 @property (weak, nonatomic) IBOutlet UITextField *txfMaintenanceInterval;

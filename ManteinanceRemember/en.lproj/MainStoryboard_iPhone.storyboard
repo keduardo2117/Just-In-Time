@@ -521,6 +521,72 @@
             </objects>
             <point key="canvasLocation" x="1633" y="201"/>
         </scene>
+        <!--Compressor Observations View Controller - Observaciones-->
+        <scene sceneID="9fN-RV-pz1">
+            <objects>
+                <viewController id="Bvg-Kk-a0E" customClass="CompressorObservationsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="57e-j9-dUo">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="xSP-P2-Yrl" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="MAS-rN-pia">
+                                        <rect key="frame" x="20" y="20" width="280" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="&quot;Añade notas y detalles de este compresor para ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-LightOblique"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="futura referencia.">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-BoldOblique"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="&quot;">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-LightOblique"/>
+                                                    <font key="NSOriginalFont" size="14" name="Helvetica-LightOblique"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="mbr-TY-Qg3">
+                                        <rect key="frame" x="20" y="67" width="280" height="329"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Bvg-Kk-a0E" id="Bfs-9u-CG1"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Observaciones" id="BAG-D7-exJ"/>
+                    <connections>
+                        <outlet property="txtVObservations" destination="mbr-TY-Qg3" id="qQt-z7-GdC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="van-1l-gtT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2621" y="811"/>
+        </scene>
         <!--New Compressor Controller - Nuevo compresor-->
         <scene sceneID="nbj-X3-ynu">
             <objects>
@@ -570,8 +636,23 @@
                                             <outlet property="delegate" destination="8sF-k5-1X4" id="QhE-kY-lnK"/>
                                         </connections>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iQ6-Xy-3qv">
+                                        <rect key="frame" x="94" y="349" width="132" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Observaciones" backgroundImage="ipad-button-green.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="ipad-button-green.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="Bvg-Kk-a0E" kind="push" identifier="addObservation" id="mnE-nC-i1Z"/>
+                                        </connections>
+                                    </button>
                                     <view contentMode="scaleToFill" id="D3Q-Ye-Cdf">
-                                        <rect key="frame" x="0.0" y="155" width="320" height="260"/>
+                                        <rect key="frame" x="0.0" y="156" width="320" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" id="MHG-oi-Qkx">
@@ -628,7 +709,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="18I-vV-7yu">
-                                        <rect key="frame" x="0.0" y="155" width="320" height="260"/>
+                                        <rect key="frame" x="0.0" y="156" width="320" height="260"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="NLN-1K-0WO">
@@ -709,6 +790,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="lblContactPersonName" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblMail" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="lblTelephone" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CompressorObservationsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CompressorObservationsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="txtVObservations" candidateClass="UITextView"/>
             </relationships>
         </class>
         <class className="ExtrasViewController" superclassName="UIViewController">

@@ -71,6 +71,7 @@
     compressor.ultimoMantenimiento = [compressorData valueForKey:@"lastMaintenance"];
     compressor.proximoMantenimiento = [compressorData valueForKey:@"nextMaintenance"];
     compressor.maintennaceInterval = [compressorData valueForKey:@"hoursToNotifyBeforeMaintenance"];
+    compressor.observations = compressorData[@"observations"];
     [compressorsSet addObject:compressor];
     
     NSDictionary *response;
