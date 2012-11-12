@@ -32,6 +32,10 @@
       [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
       UITextAttributeTextShadowOffset,
       nil]];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar.png"]];
+    UIImage *indicatorImage = [UIImage imageNamed:@"tabbar-active.png"];
+    indicatorImage = [indicatorImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 17, 0, 17)];
+    [[UITabBar appearance] setSelectionIndicatorImage:indicatorImage];
     [[UIBarButtonItem appearance] setBackButtonBackgroundVerticalPositionAdjustment:1.0f forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackgroundVerticalPositionAdjustment:1.0f forBarMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setTitlePositionAdjustment:UIOffsetMake(0, 0) forBarMetrics:UIBarMetricsDefault];
@@ -66,11 +70,14 @@
         ListOfCompaniesController *controller = (ListOfCompaniesController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+        /*
+        UITabBarController * tabBarController = (UITabBarController *) self.window.rootViewController;
+        UINavigationController *navigationController = [tabBarController viewControllers][0];
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"ipad-menubar-left.png"] forBarMetrics:UIBarMetricsDefault];
         [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"ipad-menubar-right.png"] forBarMetrics:UIBarMetricsLandscapePhone];
         ListOfCompaniesController *controller = (ListOfCompaniesController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
+         */
     }
     //[[UIApplication sharedApplication] cancelAllLocalNotifications];
     return YES;

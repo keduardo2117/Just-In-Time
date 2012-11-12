@@ -35,16 +35,9 @@
     [self becomeFirstResponder];
     UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
     [self.view setBackgroundColor:bgColor];
-    /*
-    PVCustomPikhubButton *addButton = [[PVCustomPikhubButton alloc] initWithFrame:CGRectZero isBackButton:NO];
-    [addButton addTarget:self action:@selector(openNewCompanyView) forControlEvents:UIControlEventTouchUpInside];
-    [addButton setButtonTitle:@"Agregar"];
-    UIBarButtonItem *addNewCompany = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-    [self.navigationItem setRightBarButtonItem:addNewCompany animated:YES];
-     */
     self.detailViewController = (DetailViewController *)[[self.splitViewController.viewControllers lastObject] topViewController];
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
-    [self.tableView.tableFooterView.layer addSublayer:[self createShadowWithFrame:CGRectMake(0, 0, 320, 5)]];
+    
 }
 
 - (void)viewDidUnload
@@ -58,6 +51,9 @@
     [self becomeFirstResponder];
     self.companies = [[DataManager sharedInstance] getListOfCompanies];
     [self sortList];
+    if (self.companies.count != 0 && [[self.tableView.tableFooterView.layer sublayers] count] == 0) {
+        [self.tableView.tableFooterView.layer addSublayer:[self createShadowWithFrame:CGRectMake(0, 0, 320, 5)]];
+    }
     [self.tableView reloadData];
 }
 
@@ -136,7 +132,7 @@
     if ([segue.identifier isEqualToString:@"verCompresores"]) {
         //ListOfCompressorsController *compresores  = segue.destinationViewController;
         NSIndexPath *index = [self.tableView indexPathForCell:sender];
-        [[segue destinationViewController] setCompany:[self.companies objectAtIndex:index.row]];
+        [[segue destinationViewController] setCompany:self.companies[index.row]];
         //compresores.company = [self.companies objectAtIndex:index.row];
     }
 }

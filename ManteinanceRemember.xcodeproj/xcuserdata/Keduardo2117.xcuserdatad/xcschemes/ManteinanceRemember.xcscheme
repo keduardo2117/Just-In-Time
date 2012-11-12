@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6C2FB15A15FC3FD8005E23DA"
-               BuildableName = "ManteinanceRemember.app"
+               BuildableName = "Just In Time.app"
                BlueprintName = "ManteinanceRemember"
                ReferencedContainer = "container:ManteinanceRemember.xcodeproj">
             </BuildableReference>
@@ -33,7 +33,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C2FB15A15FC3FD8005E23DA"
-            BuildableName = "ManteinanceRemember.app"
+            BuildableName = "Just In Time.app"
             BlueprintName = "ManteinanceRemember"
             ReferencedContainer = "container:ManteinanceRemember.xcodeproj">
          </BuildableReference>
@@ -52,7 +52,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C2FB15A15FC3FD8005E23DA"
-            BuildableName = "ManteinanceRemember.app"
+            BuildableName = "Just In Time.app"
             BlueprintName = "ManteinanceRemember"
             ReferencedContainer = "container:ManteinanceRemember.xcodeproj">
          </BuildableReference>
@@ -70,7 +70,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6C2FB15A15FC3FD8005E23DA"
-            BuildableName = "ManteinanceRemember.app"
+            BuildableName = "Just In Time.app"
             BlueprintName = "ManteinanceRemember"
             ReferencedContainer = "container:ManteinanceRemember.xcodeproj">
          </BuildableReference>

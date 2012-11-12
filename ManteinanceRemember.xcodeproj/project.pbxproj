@@ -17,6 +17,7 @@
 		03A4A6551618348B00C66129 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6511618348B00C66129 /* README.md */; };
 		03A4A6561618348B00C66129 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6521618348B00C66129 /* release_notes.md */; };
 		03A4A65916183E3500C66129 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4A65816183E3500C66129 /* libz.dylib */; };
+		03CA4C1F165087B6003C03B1 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */; };
 		03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9CEC6163CB8DC002ADBFA /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		03F9CECF163CBA11002ADBFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */; };
 		6C18AC8A160FCDF7003C30FD /* ListOfCompressorsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AC89160FCDF7003C30FD /* ListOfCompressorsController.m */; };
@@ -155,6 +156,8 @@
 		03A4A6521618348B00C66129 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
 		03A4A6531618348B00C66129 /* TestFlight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestFlight.h; sourceTree = "<group>"; };
 		03A4A65816183E3500C66129 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		03CA4C1D165087B6003C03B1 /* ExtrasViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExtrasViewController.h; sourceTree = "<group>"; };
+		03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
 		03F9CEC5163CB8DC002ADBFA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = External/Reachability.h; sourceTree = "<group>"; };
 		03F9CEC6163CB8DC002ADBFA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = External/Reachability.m; sourceTree = "<group>"; };
 		03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -250,7 +253,7 @@
 		6C2BDF2E1615468E0085247B /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		6C2BDF311615550A0085247B /* DataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataManager.h; sourceTree = "<group>"; };
 		6C2BDF321615550A0085247B /* DataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataManager.m; sourceTree = "<group>"; };
-		6C2FB15B15FC3FD8005E23DA /* ManteinanceRemember.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ManteinanceRemember.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C2FB15B15FC3FD8005E23DA /* Just In Time.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Just In Time.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C2FB15F15FC3FD8005E23DA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		6C2FB16115FC3FD8005E23DA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6C2FB16315FC3FD8005E23DA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -471,7 +474,7 @@
 		6C2FB15C15FC3FD8005E23DA /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6C2FB15B15FC3FD8005E23DA /* ManteinanceRemember.app */,
+				6C2FB15B15FC3FD8005E23DA /* Just In Time.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -522,6 +525,8 @@
 				03043D09161D2F690084DCD5 /* Empresa.h */,
 				03043D0A161D2F690084DCD5 /* Empresa.m */,
 				0350F6ED161FE37A00D52F8B /* FirstTimeConfig.plist */,
+				03CA4C1D165087B6003C03B1 /* ExtrasViewController.h */,
+				03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */,
 			);
 			path = ManteinanceRemember;
 			sourceTree = "<group>";
@@ -565,7 +570,7 @@
 			);
 			name = ManteinanceRemember;
 			productName = ManteinanceRemember;
-			productReference = 6C2FB15B15FC3FD8005E23DA /* ManteinanceRemember.app */;
+			productReference = 6C2FB15B15FC3FD8005E23DA /* Just In Time.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -727,6 +732,7 @@
 				03043D08161D2F680084DCD5 /* Compresor.m in Sources */,
 				03043D0B161D2F690084DCD5 /* Empresa.m in Sources */,
 				03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */,
+				03CA4C1F165087B6003C03B1 /* ExtrasViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -823,7 +829,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1\"",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Just In Time";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -841,7 +847,7 @@
 					"\"$(SRCROOT)/External/TestFlightSDK1\"",
 					"\"$(SDKROOT)/usr/lib/system\"",
 				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Just In Time";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};

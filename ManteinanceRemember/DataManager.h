@@ -13,6 +13,7 @@
 +(id)sharedInstance;
 -(NSMutableArray*) getListOfCompanies;
 -(NSMutableArray*) getCompressorsFromCompany:(Empresa*)company;
+-(NSMutableArray*) getAllCompressors;
 -(NSDictionary*)saveNewCompressor:(NSDictionary *)compressorData forCompany:(Empresa*)company;
 -(NSDictionary*)saveNewCompany:(NSDictionary*)companyData;
 -(void) deleteCompressorFromDB:(Compresor*) compressorToDelete;

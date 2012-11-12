@@ -49,6 +49,16 @@
     NSError* error = nil;
     return [NSMutableArray arrayWithArray:[context executeFetchRequest:fetchRequest error:&error]];
 }
+
+-(NSMutableArray*) getAllCompressors{
+    NSArray * compressors = [NSMutableArray array];
+    NSArray * companies = [[DataManager sharedInstance] getListOfCompanies];
+    for (Empresa * empresa in companies) {
+        compressors = [compressors arrayByAddingObjectsFromArray:[[DataManager sharedInstance] getCompressorsFromCompany:empresa]];
+    }
+    return [NSMutableArray arrayWithArray:compressors];
+}
+
 -(NSDictionary*)saveNewCompressor:(NSDictionary *)compressorData forCompany:(Empresa*)company
 {
     NSError* error = nil;
@@ -170,4 +180,5 @@
         NSLog(@"Exito creando marcador");
     }
 }
+
 @end

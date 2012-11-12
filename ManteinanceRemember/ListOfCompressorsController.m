@@ -62,22 +62,17 @@
     sortValue = @"proximoMantenimiento";
     UIColor* bgColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"ipad-BG-pattern.png"]];
     [self.view setBackgroundColor:bgColor];
-    /*PVCustomPikhubButton *backButton = [[PVCustomPikhubButton alloc] initWithFrame:CGRectZero isBackButton:YES];
-    [backButton addTarget:self action:@selector(goBack) forControlEvents:UIControlEventTouchUpInside];
-    [backButton setButtonTitle:@"Volver"];
-    UIBarButtonItem *goBackBarBtn = [[UIBarButtonItem alloc] initWithCustomView:backButton];
-    PVCustomPikhubButton *addButton = [[PVCustomPikhubButton alloc] initWithFrame:CGRectZero isBackButton:NO];
-    [addButton addTarget:self action:@selector(openNewCompressorView) forControlEvents:UIControlEventTouchUpInside];
-    [addButton setButtonTitle:@"Agregar"];
-    UIBarButtonItem *addNewCompressor = [[UIBarButtonItem alloc] initWithCustomView:addButton];
-    [self.navigationItem setRightBarButtonItem:addNewCompressor animated:YES];
-     
-    [self.navigationItem setLeftBarButtonItem:goBackBarBtn animated:YES];
-     */
-    [self setTitleView];
-    compressors = [[DataManager sharedInstance] getCompressorsFromCompany:self.company];
+
+    
+    if (self.company) {
+        [self setTitleView];
+        compressors = [[DataManager sharedInstance] getCompressorsFromCompany:self.company];
+    }else{
+        compressors = [[DataManager sharedInstance] getAllCompressors];
+        [self.navigationItem setRightBarButtonItem:nil];
+    }
+    NSLog(@"COMPRESORES %d",compressors.count);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
-    [self.tableView.tableFooterView.layer addSublayer:[self createShadowWithFrame:CGRectMake(0, 0, 320, 5)]];
 }
 
 - (void)viewDidUnload
@@ -88,11 +83,18 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    NSLog(@"Aparecio la vista");
     [self becomeFirstResponder];
     [super viewWillAppear:animated];
-    compressors = [[DataManager sharedInstance] getCompressorsFromCompany:self.company];
+    if (self.company) {
+        compressors = [[DataManager sharedInstance] getCompressorsFromCompany:self.company];
+    }else{
+        compressors = [[DataManager sharedInstance] getAllCompressors];
+        [self.navigationItem setRightBarButtonItem:nil];
+    }
     [self sortListByValue:sortValue];
+    if (compressors.count != 0 && [[self.tableView.tableFooterView.layer sublayers] count] == 0) {
+        [self.tableView.tableFooterView.layer addSublayer:[self createShadowWithFrame:CGRectMake(0, 0, 320, 5)]];
+    }
     [self.tableView reloadData];
 }
 
@@ -212,9 +214,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.tag = indexPath.row;
-    [self performSegueWithIdentifier:@"editCompressor" sender:cell];
+    if (self.company) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        cell.tag = indexPath.row;
+        [self performSegueWithIdentifier:@"editCompressor" sender:cell];
+    }
 }
 #pragma mark NewCompressorDelegate
 -(void)saveNewCompressor:(NSDictionary *)companyData{
