@@ -152,6 +152,14 @@
     lblLastMaintenance.text = [NSString stringWithFormat:@"Ultimo mantenimiento %@", [formatter stringFromDate:compressor.ultimoMantenimiento]];
     lblNextMaintenance.text = [NSString stringWithFormat:@"Prox. mantenimiento %@",[formatter stringFromDate:compressor.proximoMantenimiento]];
     
+    NSInteger hoursBetweenDates = [[NSDate date] timeIntervalSinceDate:compressor.proximoMantenimiento]/3600;
+    if (hoursBetweenDates <0)
+        hoursBetweenDates = (hoursBetweenDates*-1);
+    NSLog(@"HORAS %d",hoursBetweenDates);
+    if (hoursBetweenDates < 672) {
+        lblNextMaintenance.textColor = [UIColor redColor];
+    }
+    
     return cell;
 }
 
