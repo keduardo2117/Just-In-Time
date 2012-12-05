@@ -71,7 +71,6 @@
         compressors = [[DataManager sharedInstance] getAllCompressors];
         [self.navigationItem setRightBarButtonItem:nil];
     }
-    NSLog(@"COMPRESORES %d",compressors.count);
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 5)];
 }
 

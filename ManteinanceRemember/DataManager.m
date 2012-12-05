@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "Empresa.h"
 #import "Compresor.h"
+#import "Correo.h"
 #import "BlockAlertView.h"
 @implementation DataManager{
      NSManagedObjectContext *context;
@@ -92,7 +93,14 @@
         Empresa *company = [NSEntityDescription insertNewObjectForEntityForName:@"Empresa" inManagedObjectContext:context];
         company.nombreEmpresa = [companyData valueForKey:@"name"];
         company.personaContacto = [companyData valueForKey:@"contactPerson"];
-        company.correo = [companyData valueForKey:@"mail"];
+        
+        for (NSString * mail in companyData[@"mail"]) {
+            Correo * correo = [NSEntityDescription insertNewObjectForEntityForName:@"Correo" inManagedObjectContext:context];
+            correo.correo = mail;
+            correo.empresaRelacionada = company;
+        }
+        
+        
         company.telefono = [NSNumber numberWithInteger:[[companyData valueForKey:@"thelephone"] integerValue]];
         [context save:&error];
         response = @{ @"success" : @YES };

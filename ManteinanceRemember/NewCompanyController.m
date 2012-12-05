@@ -14,11 +14,12 @@
 
 @end
 
-@implementation NewCompanyController
+@implementation NewCompanyController{
+    NSArray * _mails;
+}
 @synthesize txfCompanyName;
 @synthesize txfContactPersonName;
 @synthesize txfThelephone;
-@synthesize txfMail;
 @synthesize imgVPhoto;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,6 +31,12 @@
     return self;
 }
 
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"addMails"]) {
+        MailsViewController * controller = segue.destinationViewController;
+        controller.delegate =self;
+    }
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -57,7 +64,6 @@
     [self setTxfCompanyName:nil];
     [self setTxfContactPersonName:nil];
     [self setTxfThelephone:nil];
-    [self setTxfMail:nil];
     [self setImgVPhoto:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -83,20 +89,29 @@
 }
 
 - (void)addCompany:(id)sender {
-    if ([self validateIntroducedData]) {
-        NSDictionary* newCompanyData = @{
-        @"name" : self.txfCompanyName.text,
-        @"contactPerson": self.txfContactPersonName.text,
-        @"thelephone":self.txfThelephone.text,
-        @"mail":self.txfMail.text};
-        [[DataManager sharedInstance] saveNewCompany:newCompanyData];
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
-    }else{
+    if (![self validateIntroducedData]) {
         BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Error" message:@"Uno o mas campos estan incompletos."];
         
         [alert setDestructiveButtonWithTitle:@"Ok" block:nil];
         [alert show];
+        /*
         
+    */
+    }else{
+        if (_mails && [_mails count] != 0) {
+            NSDictionary* newCompanyData = @{
+            @"name" : self.txfCompanyName.text,
+            @"contactPerson": self.txfContactPersonName.text,
+            @"thelephone":self.txfThelephone.text,
+            @"mail":_mails};
+            [[DataManager sharedInstance] saveNewCompany:newCompanyData];
+            [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        }else {
+            BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Error" message:@"Necesitas agregar al menos un mail."];
+            
+            [alert setDestructiveButtonWithTitle:@"Ok" block:nil];
+            [alert show];
+        }
     }
 }
 
@@ -127,8 +142,6 @@
         isDataValid = NO;
     }else if ([self.txfContactPersonName.text isEqualToString:@""]){
         isDataValid = NO;
-    }else if ([self.txfMail.text isEqualToString:@""]){
-        isDataValid = NO;
     } else if ([self.txfThelephone.text isEqualToString:@""]){
         isDataValid = NO;
     }
@@ -143,11 +156,28 @@
     UIView *paddingView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 20)];
     self.txfContactPersonName.leftView = paddingView2;
     self.txfContactPersonName.leftViewMode = UITextFieldViewModeAlways;
-    UIView *paddingView3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 20)];
-    self.txfMail.leftView = paddingView3;
-    self.txfMail.leftViewMode = UITextFieldViewModeAlways;
     UIView *paddingView4 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 8, 20)];
     self.txfThelephone.leftView = paddingView4;
     self.txfThelephone.leftViewMode = UITextFieldViewModeAlways;
+}
+
+-(void)didFinishAddingMails:(NSMutableArray *)mails{
+    _mails = mails;
+    NSLog(@"%@", _mails);
+}
+
+- (void)openMailInsertionView:(id)sender{
+    if (_mails && [_mails count] != 0) {
+        BlockAlertView * alert = [BlockAlertView alertWithTitle:@"ATENCIÓN" message:@"Si haces esto, se borraran los mails que ingresaste previamente."];
+        [alert setDestructiveButtonWithTitle:@"OK, no" block:nil];
+        __weak UIViewController * controller = self;
+        [alert addButtonWithTitle:@"Continua" block:^(void){
+            [controller performSegueWithIdentifier:@"addMails" sender:nil];
+        }];
+        [alert show];
+    }else{
+        [self performSegueWithIdentifier:@"addMails" sender:nil];
+    }
+    
 }
 @end

@@ -236,13 +236,6 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo" minimumFontSize="17" background="ipad-text-input.png" clearButtonMode="always" id="MKQ-QE-wvC">
-                                        <rect key="frame" x="20" y="219" width="280" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
-                                    </textField>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="7wu-8d-myy">
                                         <rect key="frame" x="147" y="337" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -262,6 +255,21 @@
                                         <rect key="frame" x="240" y="316" width="60" height="80"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cCC-kX-0UU">
+                                        <rect key="frame" x="20" y="217" width="120" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <state key="normal" title="Correos" backgroundImage="ipad-button-blue.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted" backgroundImage="ipad-button-blue-pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="openMailInsertionView:" destination="vqR-xn-eyp" eventType="touchUpInside" id="4Q0-6z-H3o"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -273,8 +281,8 @@
                         <outlet property="imgVPhoto" destination="xV1-tV-XbS" id="guE-Hg-avm"/>
                         <outlet property="txfCompanyName" destination="YxU-di-1H0" id="hzm-UI-RPw"/>
                         <outlet property="txfContactPersonName" destination="ZQR-rN-RBF" id="dm7-N0-z8m"/>
-                        <outlet property="txfMail" destination="MKQ-QE-wvC" id="GkP-tN-aha"/>
                         <outlet property="txfThelephone" destination="aHg-Ru-jR9" id="acn-5D-r7n"/>
+                        <segue destination="whZ-Cv-Sbl" kind="push" identifier="addMails" id="Pg3-Ka-rjB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BDd-V3-0tg" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -405,28 +413,28 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="left" text="Company" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IFg-Ro-fj1">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="left" text="Contact Person" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jm3-kC-ygu">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="left" text="Thelephone" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UXF-7u-li6">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" alpha="0.0" contentMode="left" text="Mail" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BHl-xE-chi">
-                                <rect key="frame" x="20" y="20" width="280" height="21"/>
+                                <rect key="frame" x="20" y="20" width="280" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -520,6 +528,87 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1633" y="201"/>
+        </scene>
+        <!--Mails View Controller - Correos-->
+        <scene sceneID="s0B-nn-GtY">
+            <objects>
+                <viewController id="whZ-Cv-Sbl" customClass="MailsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Xdw-ab-v54">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="F8W-Lm-L05" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Correo 1" minimumFontSize="17" background="ipad-text-input.png" id="7x3-ks-xql">
+                                        <rect key="frame" x="20" y="60" width="280" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="textColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress"/>
+                                    </textField>
+                                    <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="5" id="E8S-Bw-nNQ">
+                                        <rect key="frame" x="206" y="20" width="94" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <connections>
+                                            <action selector="stepperDidChangeValue:" destination="whZ-Cv-Sbl" eventType="valueChanged" id="KTz-W9-ma7"/>
+                                        </connections>
+                                    </stepper>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zUl-ce-csv">
+                                        <rect key="frame" x="20" y="20" width="173" height="27"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="&quot;Agrega hasta ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-Oblique"/>
+                                                    <font key="NSOriginalFont" size="12" name="Helvetica-Oblique"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="5 correos">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-BoldOblique"/>
+                                                    <font key="NSOriginalFont" size="14" name="Helvetica-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=".&quot;">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.0" green="0.2666666667" blue="0.46274509800000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="14" name="Helvetica-Oblique"/>
+                                                    <font key="NSOriginalFont" size="12" name="Helvetica-Oblique"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="faf-Uk-D2t" appends="YES" id="RSb-Hs-htT"/>
+                                </connections>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Correos" id="6LA-3n-TBW"/>
+                    <connections>
+                        <outlet property="scrollView" destination="F8W-Lm-L05" id="ejZ-C4-pNW"/>
+                        <outlet property="stepper" destination="E8S-Bw-nNQ" id="fMW-Di-4sH"/>
+                        <outlet property="txfMail0" destination="7x3-ks-xql" id="0VC-sj-o3M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XVr-ss-yiB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="faf-Uk-D2t">
+                    <connections>
+                        <action selector="hideAllTextFields:" destination="whZ-Cv-Sbl" id="DTr-2L-ogo"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="2217" y="-439"/>
         </scene>
         <!--Compressor Observations View Controller - Observaciones-->
         <scene sceneID="9fN-RV-pz1">
@@ -637,14 +726,14 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="iQ6-Xy-3qv">
-                                        <rect key="frame" x="94" y="349" width="132" height="44"/>
+                                        <rect key="frame" x="180" y="349" width="120" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="Observaciones" backgroundImage="ipad-button-green.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <state key="highlighted" backgroundImage="ipad-button-green.png">
+                                        <state key="highlighted" backgroundImage="ipad-button-green-pressed.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -815,14 +904,24 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 <relationship kind="outlet" name="showCompanyDataTap" candidateClass="UITapGestureRecognizer"/>
             </relationships>
         </class>
+        <class className="MailsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MailsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hideAllTextFields:"/>
+                <relationship kind="action" name="stepperDidChangeValue:"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="TPKeyboardAvoidingScrollView"/>
+                <relationship kind="outlet" name="stepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="txfMail0" candidateClass="UITextField"/>
+            </relationships>
+        </class>
         <class className="NewCompanyController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/NewCompanyController.h"/>
             <relationships>
                 <relationship kind="action" name="addPhoto:"/>
+                <relationship kind="action" name="openMailInsertionView:"/>
                 <relationship kind="outlet" name="imgVPhoto" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="txfCompanyName" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txfContactPersonName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="txfMail" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="txfThelephone" candidateClass="UITextField"/>
             </relationships>
         </class>
@@ -854,7 +953,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="NOA-oj-3bG"/>
+        <segue reference="fvK-zB-gUT"/>
         <segue reference="JWc-JK-66d"/>
     </inferredMetricsTieBreakers>
 </document>

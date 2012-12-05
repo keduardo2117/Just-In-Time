@@ -2,7 +2,7 @@
 //  Compresor.h
 //  ManteinanceRemember
 //
-//  Created by Eduardo Carrillo Albor on 12/11/12.
+//  Created by Eduardo Carrillo Albor on 04/12/12.
 //  Copyright (c) 2012 Eduardo Antonio Carrillo Albor. All rights reserved.
 //
 
@@ -16,9 +16,9 @@
 @property (nonatomic, retain) NSString * identifier;
 @property (nonatomic, retain) NSNumber * maintennaceInterval;
 @property (nonatomic, retain) NSString * modelo;
+@property (nonatomic, retain) NSString * observations;
 @property (nonatomic, retain) NSDate * proximoMantenimiento;
 @property (nonatomic, retain) NSDate * ultimoMantenimiento;
-@property (nonatomic, retain) NSString * observations;
 @property (nonatomic, retain) Empresa *comprador;
 
 @end

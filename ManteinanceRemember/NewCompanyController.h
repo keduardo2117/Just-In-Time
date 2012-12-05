@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface NewCompanyController : UIViewController<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+#import "MailsViewController.h"
+@interface NewCompanyController : UIViewController<UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, MailsDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *txfCompanyName;
 @property (weak, nonatomic) IBOutlet UITextField *txfContactPersonName;
 @property (weak, nonatomic) IBOutlet UITextField *txfThelephone;
-@property (weak, nonatomic) IBOutlet UITextField *txfMail;
 @property (weak, nonatomic) IBOutlet UIImageView *imgVPhoto;
 
+- (IBAction)openMailInsertionView:(id)sender;
 - (IBAction)addPhoto:(id)sender;
 @end

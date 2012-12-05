@@ -11,15 +11,17 @@
 		03043D0E161D48190084DCD5 /* alert-gray-button.png in Resources */ = {isa = PBXBuildFile; fileRef = 03043D0C161D48170084DCD5 /* alert-gray-button.png */; };
 		03043D0F161D48190084DCD5 /* alert-gray-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 03043D0D161D48170084DCD5 /* alert-gray-button@2x.png */; };
 		031FBC3B1619501800FBAD92 /* STSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = 031FBC3A1619501800FBAD92 /* STSegmentedControl.m */; };
+		03218E91166EF310005863CC /* Correo.m in Sources */ = {isa = PBXBuildFile; fileRef = 03218E8A166EF30F005863CC /* Correo.m */; };
+		03218E92166EF310005863CC /* Empresa.m in Sources */ = {isa = PBXBuildFile; fileRef = 03218E8C166EF30F005863CC /* Empresa.m */; };
+		03218E93166EF310005863CC /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 03218E8E166EF310005863CC /* Event.m */; };
+		03218E96166EF377005863CC /* Compresor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03218E95166EF377005863CC /* Compresor.m */; };
 		0350F6EE161FE37A00D52F8B /* FirstTimeConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0350F6ED161FE37A00D52F8B /* FirstTimeConfig.plist */; };
+		0357A6EA165AF3350026F164 /* MailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0357A6E9165AF3350026F164 /* MailsViewController.m */; };
 		03A4A6551618348B00C66129 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6511618348B00C66129 /* README.md */; };
 		03A4A6561618348B00C66129 /* release_notes.md in Resources */ = {isa = PBXBuildFile; fileRef = 03A4A6521618348B00C66129 /* release_notes.md */; };
 		03A4A65916183E3500C66129 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A4A65816183E3500C66129 /* libz.dylib */; };
 		03CA4C1F165087B6003C03B1 /* ExtrasViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */; };
 		03CA4C271650CB1E003C03B1 /* CompressorObservationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C261650CB1E003C03B1 /* CompressorObservationsViewController.m */; };
-		03CA4C2B1650CD29003C03B1 /* Empresa.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C2A1650CD28003C03B1 /* Empresa.m */; };
-		03CA4C2E1650CD29003C03B1 /* Compresor.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C2D1650CD29003C03B1 /* Compresor.m */; };
-		03CA4C311650CD2A003C03B1 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CA4C301650CD2A003C03B1 /* Event.m */; };
 		03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 03F9CEC6163CB8DC002ADBFA /* Reachability.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		03F9CECF163CBA11002ADBFA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */; };
 		6C18AC8A160FCDF7003C30FD /* ListOfCompressorsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C18AC89160FCDF7003C30FD /* ListOfCompressorsController.m */; };
@@ -148,7 +150,17 @@
 		03043D0D161D48170084DCD5 /* alert-gray-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "alert-gray-button@2x.png"; sourceTree = "<group>"; };
 		031FBC391619501800FBAD92 /* STSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STSegmentedControl.h; sourceTree = "<group>"; };
 		031FBC3A1619501800FBAD92 /* STSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STSegmentedControl.m; sourceTree = "<group>"; };
+		03218E89166EF30F005863CC /* Correo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Correo.h; sourceTree = "<group>"; };
+		03218E8A166EF30F005863CC /* Correo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Correo.m; sourceTree = "<group>"; };
+		03218E8B166EF30F005863CC /* Empresa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Empresa.h; sourceTree = "<group>"; };
+		03218E8C166EF30F005863CC /* Empresa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empresa.m; sourceTree = "<group>"; };
+		03218E8D166EF310005863CC /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		03218E8E166EF310005863CC /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
+		03218E94166EF377005863CC /* Compresor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compresor.h; sourceTree = "<group>"; };
+		03218E95166EF377005863CC /* Compresor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Compresor.m; sourceTree = "<group>"; };
 		0350F6ED161FE37A00D52F8B /* FirstTimeConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = FirstTimeConfig.plist; sourceTree = "<group>"; };
+		0357A6E8165AF3350026F164 /* MailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailsViewController.h; sourceTree = "<group>"; };
+		0357A6E9165AF3350026F164 /* MailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailsViewController.m; sourceTree = "<group>"; };
 		03A4A6501618348B00C66129 /* libTestFlight.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTestFlight.a; sourceTree = "<group>"; };
 		03A4A6511618348B00C66129 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		03A4A6521618348B00C66129 /* release_notes.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = release_notes.md; sourceTree = "<group>"; };
@@ -158,12 +170,6 @@
 		03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExtrasViewController.m; sourceTree = "<group>"; };
 		03CA4C251650CB1E003C03B1 /* CompressorObservationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompressorObservationsViewController.h; sourceTree = "<group>"; };
 		03CA4C261650CB1E003C03B1 /* CompressorObservationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompressorObservationsViewController.m; sourceTree = "<group>"; };
-		03CA4C291650CD28003C03B1 /* Empresa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Empresa.h; sourceTree = "<group>"; };
-		03CA4C2A1650CD28003C03B1 /* Empresa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Empresa.m; sourceTree = "<group>"; };
-		03CA4C2C1650CD29003C03B1 /* Compresor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Compresor.h; sourceTree = "<group>"; };
-		03CA4C2D1650CD29003C03B1 /* Compresor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Compresor.m; sourceTree = "<group>"; };
-		03CA4C2F1650CD2A003C03B1 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
-		03CA4C301650CD2A003C03B1 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 		03F9CEC5163CB8DC002ADBFA /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = External/Reachability.h; sourceTree = "<group>"; };
 		03F9CEC6163CB8DC002ADBFA /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = External/Reachability.m; sourceTree = "<group>"; };
 		03F9CECD163CB9FD002ADBFA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -506,6 +512,14 @@
 		6C2FB16715FC3FD8005E23DA /* ManteinanceRemember */ = {
 			isa = PBXGroup;
 			children = (
+				03218E94166EF377005863CC /* Compresor.h */,
+				03218E95166EF377005863CC /* Compresor.m */,
+				03218E89166EF30F005863CC /* Correo.h */,
+				03218E8A166EF30F005863CC /* Correo.m */,
+				03218E8B166EF30F005863CC /* Empresa.h */,
+				03218E8C166EF30F005863CC /* Empresa.m */,
+				03218E8D166EF310005863CC /* Event.h */,
+				03218E8E166EF310005863CC /* Event.m */,
 				6C2FB17015FC3FD8005E23DA /* AppDelegate.h */,
 				6C2FB17115FC3FD8005E23DA /* AppDelegate.m */,
 				6C2FB17315FC3FD8005E23DA /* MainStoryboard_iPhone.storyboard */,
@@ -531,12 +545,8 @@
 				03CA4C1E165087B6003C03B1 /* ExtrasViewController.m */,
 				03CA4C251650CB1E003C03B1 /* CompressorObservationsViewController.h */,
 				03CA4C261650CB1E003C03B1 /* CompressorObservationsViewController.m */,
-				03CA4C291650CD28003C03B1 /* Empresa.h */,
-				03CA4C2A1650CD28003C03B1 /* Empresa.m */,
-				03CA4C2C1650CD29003C03B1 /* Compresor.h */,
-				03CA4C2D1650CD29003C03B1 /* Compresor.m */,
-				03CA4C2F1650CD2A003C03B1 /* Event.h */,
-				03CA4C301650CD2A003C03B1 /* Event.m */,
+				0357A6E8165AF3350026F164 /* MailsViewController.h */,
+				0357A6E9165AF3350026F164 /* MailsViewController.m */,
 			);
 			path = ManteinanceRemember;
 			sourceTree = "<group>";
@@ -742,9 +752,11 @@
 				03F9CEC7163CB8DC002ADBFA /* Reachability.m in Sources */,
 				03CA4C1F165087B6003C03B1 /* ExtrasViewController.m in Sources */,
 				03CA4C271650CB1E003C03B1 /* CompressorObservationsViewController.m in Sources */,
-				03CA4C2B1650CD29003C03B1 /* Empresa.m in Sources */,
-				03CA4C2E1650CD29003C03B1 /* Compresor.m in Sources */,
-				03CA4C311650CD2A003C03B1 /* Event.m in Sources */,
+				0357A6EA165AF3350026F164 /* MailsViewController.m in Sources */,
+				03218E91166EF310005863CC /* Correo.m in Sources */,
+				03218E92166EF310005863CC /* Empresa.m in Sources */,
+				03218E93166EF310005863CC /* Event.m in Sources */,
+				03218E96166EF377005863CC /* Compresor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,16 @@
         <attribute name="ultimoMantenimiento" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="comprador" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Empresa" inverseName="compresores" inverseEntity="Empresa" syncable="YES"/>
     </entity>
-    <entity name="Empresa" representedClassName="Empresa" syncable="YES">
+    <entity name="Correo" representedClassName="Correo" syncable="YES">
         <attribute name="correo" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imagen" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="empresaRelacionada" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="Empresa" inverseName="correos" inverseEntity="Empresa" syncable="YES"/>
+    </entity>
+    <entity name="Empresa" representedClassName="Empresa" syncable="YES">
         <attribute name="nombreEmpresa" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="personaContacto" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="telefono" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <relationship name="compresores" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Compresor" inverseName="comprador" inverseEntity="Compresor" syncable="YES"/>
+        <relationship name="correos" optional="YES" toMany="YES" minCount="1" deletionRule="Cascade" destinationEntity="Correo" inverseName="empresaRelacionada" inverseEntity="Correo" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event">
         <attribute name="timeStamp" optional="YES" attributeType="Date">
@@ -25,7 +28,8 @@
     </entity>
     <elements>
         <element name="Compresor" positionX="79" positionY="-156" width="128" height="148"/>
-        <element name="Empresa" positionX="-180" positionY="-171" width="128" height="133"/>
+        <element name="Empresa" positionX="-180" positionY="-171" width="128" height="120"/>
         <element name="Event" positionX="-207" positionY="0" width="128" height="58"/>
+        <element name="Correo" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

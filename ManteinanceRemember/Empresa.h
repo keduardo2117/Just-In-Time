@@ -2,7 +2,7 @@
 //  Empresa.h
 //  ManteinanceRemember
 //
-//  Created by Eduardo Carrillo Albor on 12/11/12.
+//  Created by Eduardo Carrillo Albor on 04/12/12.
 //  Copyright (c) 2012 Eduardo Antonio Carrillo Albor. All rights reserved.
 //
 
@@ -13,12 +13,11 @@
 
 @interface Empresa : NSManagedObject
 
-@property (nonatomic, retain) NSString * correo;
-@property (nonatomic, retain) NSString * imagen;
 @property (nonatomic, retain) NSString * nombreEmpresa;
 @property (nonatomic, retain) NSString * personaContacto;
 @property (nonatomic, retain) NSNumber * telefono;
 @property (nonatomic, retain) NSSet *compresores;
+@property (nonatomic, retain) NSSet *correos;
 @end
 
 @interface Empresa (CoreDataGeneratedAccessors)
@@ -27,5 +26,10 @@
 - (void)removeCompresoresObject:(Compresor *)value;
 - (void)addCompresores:(NSSet *)values;
 - (void)removeCompresores:(NSSet *)values;
+
+- (void)addCorreosObject:(NSManagedObject *)value;
+- (void)removeCorreosObject:(NSManagedObject *)value;
+- (void)addCorreos:(NSSet *)values;
+- (void)removeCorreos:(NSSet *)values;
 
 @end

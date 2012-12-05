@@ -10,12 +10,13 @@
 #import "Empresa.h"
 #import "BlockAlertView.h"
 #import "Reachability.h"
-
+#import "Correo.h"
 @interface CompanyInformationDisplayController ()
-
 @end
 
-@implementation CompanyInformationDisplayController
+@implementation CompanyInformationDisplayController{
+    NSMutableArray * _mailsLabels;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,19 +33,54 @@
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     self.actionSheet.transform = CGAffineTransformMakeTranslation(0, 185);
+    int i = 0;
+    if (!_mailsLabels) {
+        _mailsLabels = [NSMutableArray array];
+        for (Correo * mails in self.company.correos) {
+            if (i==0){
+                self.lblMail.text = mails.correo;
+                self.lblMail.tag = i;
+                [_mailsLabels addObject:self.lblMail];
+            }else{
+                UILabel * mail = [[UILabel alloc] initWithFrame:CGRectMake(20, 20, 280, 20)];
+                mail.tag = i;
+                mail.userInteractionEnabled = YES;
+                mail.text = mails.correo;
+                mail.alpha = 0.0f;
+                mail.backgroundColor = [UIColor clearColor];
+                [mail setFont:[UIFont systemFontOfSize:17]];
+                [mail setTextColor:[UIColor colorWithRed:0 green:0.2666f blue:0.46274f alpha:1.0]];
+                [_mailsLabels addObject:mail];
+                UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openMailOrMessageSelector:)];
+                [mail addGestureRecognizer:tap];
+                [self.view addSubview:mail];
+            }
+            i++;
+        }
+    }
+   
     [UIView animateWithDuration:0.3 animations:^(void){
         self.lblCompanyName.transform = CGAffineTransformMakeTranslation(0, 40);
         self.lblCompanyName.text = self.company.nombreEmpresa;
         self.lblCompanyName.alpha = 1;
+        
         self.lblContactPersonName.transform = CGAffineTransformMakeTranslation(0, 80);
         self.lblContactPersonName.text = self.company.personaContacto;
         self.lblContactPersonName.alpha = 1;
-        self.lblMail.transform = CGAffineTransformMakeTranslation(0, 120);
-        self.lblMail.text = self.company.correo;
-        self.lblMail.alpha = 1;
-        self.lblTelephone.transform = CGAffineTransformMakeTranslation(0, 160);
+       
+        self.lblTelephone.transform = CGAffineTransformMakeTranslation(0, 120);
         self.lblTelephone.text = [self.company.telefono stringValue];
         self.lblTelephone.alpha = 1;
+        
+        int xPos = 160;
+        for (UILabel * mails in _mailsLabels) {
+            mails.transform = CGAffineTransformMakeTranslation(0, xPos);
+            mails.alpha = 1.0f;
+            mails.layer.zPosition = -1;
+            xPos += 40;
+        }
+       
+        
     }];
 }
 - (void)viewDidLoad
@@ -99,7 +135,11 @@
 }
 
 -(IBAction)openMailOrMessageSelector:(id)sender{
-    [self openActionSheet];
+    for (UILabel * lbl in _mailsLabels) {
+        if([lbl.gestureRecognizers[0] isEqual:sender]){
+            [self openActionSheet:lbl.tag];
+        }
+    }
 }
 -(IBAction)openMailComposer{
     [self closeActionSheet];
@@ -110,7 +150,8 @@
             MFMailComposeViewController *mailComposer = [[MFMailComposeViewController alloc] init];
             mailComposer.mailComposeDelegate = self;
             [mailComposer setSubject:@"Aviso de mantenimiento"];
-            [mailComposer setToRecipients:@[self.company.correo]];
+            UILabel * lbl = _mailsLabels[self.actionSheet.tag];
+            [mailComposer setToRecipients:@[lbl.text]];
             [mailComposer setBccRecipients:@[@"tcste@prodigy.net.mx", @"tcsureste@gmail.com", @"mx.canmar@gmail.com"]];
             [mailComposer setMessageBody:@"Tecnocompresores del sureste \n Ing. Max Cano Marquez" isHTML:NO];
             [self presentViewController:mailComposer animated:YES completion:nil];
@@ -129,7 +170,8 @@
         if ([MFMessageComposeViewController canSendText]) {
             MFMessageComposeViewController *messageComposer = [[MFMessageComposeViewController alloc] init];
             messageComposer.messageComposeDelegate = self;
-            [messageComposer setRecipients:@[self.company.correo]];
+            UILabel * lbl = _mailsLabels[self.actionSheet.tag];
+            [messageComposer setRecipients:@[lbl.text]];
             [messageComposer setBody:@"Mantenimiento"];
             [self presentViewController:messageComposer animated:YES completion:nil];
         }
@@ -144,9 +186,10 @@
 -(IBAction) cancelMailOrMessageSending{
     [self closeActionSheet];
 }
--(void)openActionSheet{
+-(void)openActionSheet:(int)tag{
     [UIView animateWithDuration:0.3 animations:^(void){
         self.actionSheet.transform = CGAffineTransformMakeTranslation(0, -185);
+        self.actionSheet.tag = tag;
     }];
 }
 -(void)closeActionSheet{

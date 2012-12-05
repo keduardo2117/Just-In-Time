@@ -1,5 +1,5 @@
 //
-//  Event.h
+//  Correo.h
 //  ManteinanceRemember
 //
 //  Created by Eduardo Carrillo Albor on 04/12/12.
@@ -9,9 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
+@class Empresa;
 
-@interface Event : NSManagedObject
+@interface Correo : NSManagedObject
 
-@property (nonatomic, retain) NSDate * timeStamp;
+@property (nonatomic, retain) NSString * correo;
+@property (nonatomic, retain) Empresa *empresaRelacionada;
 
 @end

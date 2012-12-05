@@ -48,7 +48,7 @@
     [self.view setBackgroundColor:bgColor];
     self.lblNombreDeEmpresa.text = self.empresa.nombreEmpresa;
     self.lblPersonaContacto.text = self.empresa.personaContacto;
-    self.lblCorreo.text = self.empresa.correo;
+    //self.lblCorreo.text = self.empresa.correo;
     self.lblTelefono.text = [self.empresa.telefono stringValue];
 }
 - (void)viewDidUnload
