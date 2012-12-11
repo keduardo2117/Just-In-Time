@@ -151,6 +151,7 @@
 }
 
 -(void)modifyCompressorInDB:(NSDictionary *)compressorData{
+    NSLog(@"ANTES DE GUARDAR");
     NSEntityDescription * descriptor = [NSEntityDescription entityForName:@"Compresor" inManagedObjectContext:context];
     NSFetchRequest * request = [[NSFetchRequest alloc] init];
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"identifier = %@",[compressorData valueForKey:@"identifier"]];

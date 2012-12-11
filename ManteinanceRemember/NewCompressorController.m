@@ -61,6 +61,7 @@
 {
     [super viewDidLoad];
     if (self.compressor) {
+        observations = self.compressor.observations;
         self.txfModeloCompresor.text = self.compressor.modelo;
         NSString * intervalo = [NSString stringWithFormat:@"%d",[self.compressor.maintennaceInterval intValue]];
         self.txfMaintenanceInterval.text = intervalo;
@@ -217,6 +218,7 @@
         NSDate *ultimoMantenimiento = [formater dateFromString:self.txfLastMaintenance.text];
         NSInteger nextMaintenaceInterval = (([self.txfMaintenanceInterval.text intValue]*60)*60)*dailyWorkPeriodSelected;
         NSDate *proximoMantenimiento = [ultimoMantenimiento dateByAddingTimeInterval:nextMaintenaceInterval];
+        
         NSDictionary *newCompressorData = @{
         @"model" : self.txfModeloCompresor.text,
         @"identifier" : [[NSKeyedArchiver archivedDataWithRootObject:[NSDate date]] MD5],
@@ -227,11 +229,13 @@
         };
         
         if (self.compressor) {
+            
             NSMutableDictionary * dicc = [NSMutableDictionary dictionaryWithDictionary:newCompressorData];
             [dicc setValue:self.compressor.identifier forKey:@"identifier"];
             [dicc setValue:[NSNumber numberWithInteger:[self.txfMaintenanceInterval.text integerValue]] forKey:@"maintenanceInterval"];
             NSLog(@"Datos: %@",dicc );
             [self.delegate modifyCompressor:dicc];
+             
         }else{
             NSLog(@"Se creara compresor con data %@",newCompressorData);
             [self.delegate saveNewCompressor:newCompressorData];

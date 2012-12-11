@@ -102,7 +102,15 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    /*
+    NSURL * authorizationURL = [NSURL URLWithString:@"http://api.lastroom.mx/v1/states.json?country=1"];
+    NSURLRequest * authorizationRequest =[NSURLRequest requestWithURL:authorizationURL];
+    NSURLResponse * response;
+    NSError * error;
+    NSData * authorizationResponse = [NSURLConnection sendSynchronousRequest:authorizationRequest returningResponse:&response error:&error];
+    NSDictionary * parsedResponse = [NSJSONSerialization JSONObjectWithData:authorizationResponse options:kNilOptions error:&error];
+    NSLog(@"%@", parsedResponse);
+    */
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
