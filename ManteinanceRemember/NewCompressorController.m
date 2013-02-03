@@ -42,7 +42,7 @@
     if (self) {
         // Custom initialization
         self.compressor = nil;
-        observations = [NSString string];
+        observations = @"";
     }
     return self;
 }
@@ -194,7 +194,6 @@
     return YES;
 }
 - (IBAction)cancelIntervalSelection:(id)sender {
-    NSLog(@"Cancelo la seleccion");
     [self hideSelector];
 }
 
@@ -210,7 +209,7 @@
 }
 
 - (IBAction)acceptNewCompressor:(id)sender {
-    if ([self validarDatosIngresados]) {
+    if ([self validarDatosIngresados] && observations != nil) {
         
         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
         [formater setTimeZone:[NSTimeZone localTimeZone]];
@@ -242,6 +241,7 @@
         }
 
         [self.navigationController popViewControllerAnimated:YES];
+         
     }else{
         BlockAlertView *alert = [BlockAlertView alertWithTitle:@"Error" message:@"Uno o mas campos estan incompletos."];
         
@@ -274,13 +274,12 @@
 }
 -(BOOL)validarDatosIngresados{
     BOOL sonValidos = YES;
-    if ([self.txfLastMaintenance.text isEqualToString:@""]) {
+    if ([self.txfLastMaintenance.text isEqualToString:@""]) 
         sonValidos = NO;
-    }else if ([self.txfModeloCompresor.text isEqualToString:@""]){
+    else if ([self.txfModeloCompresor.text isEqualToString:@""])
         sonValidos = NO;
-    }else if ([self.txfMaintenanceInterval.text isEqualToString:@""]){
+    else if ([self.txfMaintenanceInterval.text isEqualToString:@""])
         sonValidos = NO;
-    }
     return sonValidos;
 }
 
