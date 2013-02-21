@@ -24,17 +24,10 @@
     NSArray* intervalos;
     NSArray* modelos;
     NSArray* datos;
-    NSInteger hoursToNotifyBeforeMaintenance;
-    NSInteger dailyWorkPeriodSelected;
+    NSInteger _hoursToNotifyBeforeMaintenance;
+    NSInteger _dailyWorkPeriodSelected;
     NSString * observations;
 }
-@synthesize txfModeloCompresor;
-@synthesize txfMaintenanceInterval;
-@synthesize txfLastMaintenance;
-@synthesize lastMaintenancePickerContainer;
-@synthesize maintenanceIntervalPickerContainer;
-@synthesize maintenanceIntervalPicker;
-@synthesize lastMaintenanceDatePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -78,7 +71,7 @@
 	segment.selectedSegmentIndex = 0;
 	segment.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     segment.layer.zPosition = -1;
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(segmentedControlSelectedIndexDidChange:) name:@"selectedIndexDidChange" object:nil];
+    [segment addTarget:self action:@selector(setHoursToNotifyBeforeMaintenance:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:segment];
     
     NSArray *dailyWorkPeriod = @[@"8",@"12",@"24"];
@@ -88,10 +81,11 @@
     dailyWorkSelector.selectedSegmentIndex = 0;
     dailyWorkSelector.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     dailyWorkSelector.layer.zPosition = -2;
+    [dailyWorkSelector addTarget:self action:@selector(setDailyWorkPeriodInterval:) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview:dailyWorkSelector];
     
-    dailyWorkPeriodSelected = 8;
-    hoursToNotifyBeforeMaintenance = 300;
+    _dailyWorkPeriodSelected = 3;
+    _hoursToNotifyBeforeMaintenance = 300;
     
     self.title = @"Nuevo compresor";
     [self setPaddingForTextfields];
@@ -115,9 +109,8 @@
     modelos = @[ @"Compresor 1", @"Compresor 2", @"Compresor 3"];
     // Do any additional setup after loading the view.
 }
-
-- (void)viewDidUnload
-{
+-(void)didReceiveMemoryWarning{
+    [super didReceiveMemoryWarning];
     [self setMaintenanceIntervalPickerContainer:nil];
     [self setMaintenanceIntervalPicker:nil];
     [self setLastMaintenanceDatePicker:nil];
@@ -126,16 +119,14 @@
     [self setTxfMaintenanceInterval:nil];
     [self setTxfModeloCompresor:nil];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
+
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context{
-    NSLog(@"rgegererggr %@",change);
 }
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-	return YES;
+	return NO;
 }
 
 #pragma mark UIPickerViewDelegate && UIPickerDataSource
@@ -208,14 +199,16 @@
     [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)acceptNewCompressor:(id)sender {
+- (void)acceptNewCompressor:(id)sender {
+    
     if ([self validarDatosIngresados] && observations != nil) {
         
         NSDateFormatter *formater = [[NSDateFormatter alloc] init];
         [formater setTimeZone:[NSTimeZone localTimeZone]];
         [formater setDateStyle:NSDateFormatterMediumStyle];
         NSDate *ultimoMantenimiento = [formater dateFromString:self.txfLastMaintenance.text];
-        NSInteger nextMaintenaceInterval = (([self.txfMaintenanceInterval.text intValue]*60)*60)*dailyWorkPeriodSelected;
+        NSInteger nextMaintenaceInterval = (([self.txfMaintenanceInterval.text intValue]*60)*60)*_dailyWorkPeriodSelected;
+        
         NSDate *proximoMantenimiento = [ultimoMantenimiento dateByAddingTimeInterval:nextMaintenaceInterval];
         
         NSDictionary *newCompressorData = @{
@@ -296,32 +289,29 @@
     self.txfModeloCompresor.leftView = paddingView3;
     self.txfModeloCompresor.leftViewMode = UITextFieldViewModeAlways;
 }
-
--(void)segmentedControlSelectedIndexDidChange:(NSNotification *)pNotification
-{
-    STSegmentedControl * control = (STSegmentedControl*)pNotification.object;
-    if (control.tag == 100) {
-        if (control.selectedSegmentIndex == 0) {
-            hoursToNotifyBeforeMaintenance = 300;
-        }else{
-            hoursToNotifyBeforeMaintenance = 500;
-        }
+-(void)setHoursToNotifyBeforeMaintenance:(id)sender{
+    STSegmentedControl * control = sender;
+    if (control.selectedSegmentIndex == 0) {
+        _hoursToNotifyBeforeMaintenance = 300;
     }else{
-        switch (control.selectedSegmentIndex) {
-            case 0:
-                dailyWorkPeriodSelected = 3;
-                break;
-            case 1:
-                dailyWorkPeriodSelected = 2;
-                break;
-            case 2:
-                dailyWorkPeriodSelected = 1;
-            default:
-                break;
-        }
+        _hoursToNotifyBeforeMaintenance = 500;
     }
 }
-
+-(void)setDailyWorkPeriodInterval:(id)sender{
+    STSegmentedControl * control = sender;
+    switch (control.selectedSegmentIndex) {
+        case 0:
+            _dailyWorkPeriodSelected = 3;
+            break;
+        case 1:
+            _dailyWorkPeriodSelected = 2;
+            break;
+        case 2:
+            _dailyWorkPeriodSelected = 1;
+        default:
+            break;
+    }
+}
 #pragma mark Observations delegate
 -(void)textView:(UITextView *)textView didChageContent:(NSString *)content{
     observations = content;

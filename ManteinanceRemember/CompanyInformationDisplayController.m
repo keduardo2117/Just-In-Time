@@ -35,7 +35,7 @@
     self.actionSheet.transform = CGAffineTransformMakeTranslation(0, 185);
     int i = 0;
     if (!_mailsLabels) {
-        _mailsLabels = [NSMutableArray array];
+        _mailsLabels = [@[] mutableCopy];
         for (Correo * mails in self.company.correos) {
             if (i==0){
                 self.lblMail.text = mails.correo;
@@ -68,19 +68,21 @@
         self.lblContactPersonName.text = self.company.personaContacto;
         self.lblContactPersonName.alpha = 1;
        
-        self.lblTelephone.transform = CGAffineTransformMakeTranslation(0, 120);
-        self.lblTelephone.text = [self.company.telefono stringValue];
-        self.lblTelephone.alpha = 1;
+        if(![self.company.telefono isEqualToNumber:@-1]){
+            self.lblTelephone.transform = CGAffineTransformMakeTranslation(0, 120);
+            self.lblTelephone.text = [self.company.telefono stringValue];
+            self.lblTelephone.alpha = 1;
+        }
         
         int xPos = 160;
-        for (UILabel * mails in _mailsLabels) {
-            mails.transform = CGAffineTransformMakeTranslation(0, xPos);
-            mails.alpha = 1.0f;
-            mails.layer.zPosition = -1;
-            xPos += 40;
+        if(![[_mailsLabels[0] text] isEqualToString:@"-1"]){
+            for (UILabel * mails in _mailsLabels) {
+                mails.transform = CGAffineTransformMakeTranslation(0, xPos);
+                mails.alpha = 1.0f;
+                mails.layer.zPosition = -1;
+                xPos += 40;
+            }
         }
-       
-        
     }];
 }
 - (void)viewDidLoad

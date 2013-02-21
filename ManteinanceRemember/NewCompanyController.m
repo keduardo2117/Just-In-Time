@@ -98,12 +98,26 @@
         
     */
     }else{
+        NSString * phoneNumber;
+        if ([self.txfThelephone.text isEqualToString:@""]) phoneNumber = @"-1";
+        else phoneNumber = self.txfThelephone.text;
+        NSArray * mails;
+        if (_mails && [_mails count] != 0) mails = _mails;
+        else mails = @[@"-1"];
+        
+        NSDictionary* newCompanyData = @{@"name" : self.txfCompanyName.text,
+                                         @"contactPerson": self.txfContactPersonName.text,
+                                         @"thelephone":phoneNumber,
+                                         @"mail":mails};
+        [[DataManager sharedInstance] saveNewCompany:newCompanyData];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+        /*
         if (_mails && [_mails count] != 0) {
             NSDictionary* newCompanyData = @{
             @"name" : self.txfCompanyName.text,
             @"contactPerson": self.txfContactPersonName.text,
-            @"thelephone":self.txfThelephone.text,
-            @"mail":_mails};
+            @"thelephone":phoneNumber,
+            @"mail":mails};
             [[DataManager sharedInstance] saveNewCompany:newCompanyData];
             [self.navigationController dismissViewControllerAnimated:YES completion:nil];
         }else {
@@ -112,6 +126,7 @@
             [alert setDestructiveButtonWithTitle:@"Ok" block:nil];
             [alert show];
         }
+        */
     }
 }
 
@@ -142,9 +157,7 @@
         isDataValid = NO;
     }else if ([self.txfContactPersonName.text isEqualToString:@""]){
         isDataValid = NO;
-    } else if ([self.txfThelephone.text isEqualToString:@""]){
-        isDataValid = NO;
-    }
+    } 
     return isDataValid;
 }
 

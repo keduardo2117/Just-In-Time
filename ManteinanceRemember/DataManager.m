@@ -99,9 +99,11 @@
             correo.correo = mail;
             correo.empresaRelacionada = company;
         }
+        NSInteger telephone;
+        if ([companyData[@"thelephone"] isEqualToString:@"-1"]) telephone = -1;
+        else telephone = [companyData[@"thelephone"] integerValue];
         
-        
-        company.telefono = [NSNumber numberWithInteger:[[companyData valueForKey:@"thelephone"] integerValue]];
+        company.telefono = [NSNumber numberWithInteger:telephone];
         [context save:&error];
         response = @{ @"success" : @YES };
     }

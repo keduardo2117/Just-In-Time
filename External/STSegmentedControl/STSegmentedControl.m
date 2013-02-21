@@ -86,8 +86,9 @@
 		 Set the standard images
 		 */
 		[self initializeImages];
-		selectedSegmentIndex = STSegmentedControlNoSegment;
-		momentary = NO;
+        
+		self.selectedSegmentIndex = STSegmentedControlNoSegment;
+		self.momentary = NO;
 	}
 	
     return self;
